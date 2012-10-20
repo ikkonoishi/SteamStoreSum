@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Steam Transaction Calculator</title>
+	<script>
+		function parseSteam(sourcestring)
+		{
+			var re = /([A-z]{3} [\d]{1,2}, [\d]{4})((?:\$[\d]+\.[\d]{2})|Free)([\S]+)\s*([^\n]*)/g;
+			var results = [];
+			var spent = 0;
+			var i = 0;
+  			for (var matches = re.exec(sourcestring); matches != null; matches = re.exec(sourcestring)) 
+			{
+    				results[i] = matches;
+				if (results[i][2] != "Free") spent += parseFloat(results[i][2].substr(1));
+				i++;
+			}
+			spent *=100;
+			spent = Math.round(spent);
+			spent /=100;
+			alert("You have spent $" + spent + " on steam.");
+		}
+	</script> 
+  </head>
+  <body>
+Go to <a href="https://store.steampowered.com/account/">your account page</a> on steam.<br/>
+<br/>
+Click on store transactions and then see all.<br/>
+Copy and paste the list of transations into the box below, and then double click on it.
+<br/>
+    <textarea style="height: 200px; width 100%" ondblclick="parseSteam(this.value)"></textarea>
+  </body>
+</html>
