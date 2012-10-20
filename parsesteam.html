@@ -4,7 +4,7 @@
 	<script>
 		function parseSteam(sourcestring)
 		{
-			var re = /([A-z]{3} [\d]{1,2}, [\d]{4})((?:\$[\d]+\.[\d]{2})|Free)([\S]+)\s*([^\n]*)/g;
+			var re = /([A-z]{3} [\d]{1,2}, [\d]{4})((?:\€[\d]+\.[\d]{2})|Free)([\S]+)\s*([^\n]*)/g;
 			var results = [];
 			var spent = 0;
 			var i = 0;
@@ -17,7 +17,7 @@
 			spent *=100;
 			spent = Math.round(spent);
 			spent /=100;
-			alert("You have spent $" + spent + " on steam.");
+			alert("You have spent €" + spent + " on steam.");
 		}
 	</script> 
   </head>
